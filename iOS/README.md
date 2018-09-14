@@ -1,5 +1,7 @@
-# Azure CEF SDK
-Azure Customer Engagement Fabric (CEF) provides unified API and SDK to enable companies to easily interact with their customers. This include notification (SMS, Email, App push), authentication (social login, OTP) and aggregated mobile payment. 
+# CEF iOS SDK
+This folder contains CEF iOS SDK under *CEFSDK* and Sample Code under *CEFSDKTest*.
+Developers can build and try seperately. Please follow README in each folder to use it.
+
 
 # Contributing
 
