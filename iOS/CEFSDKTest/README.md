@@ -2,6 +2,7 @@
 
 ## Prerequisties
 1. Download following SDKs from their offical webSite.
+
     | SDK | Version| Offical Link|
     |:--:|:--:|:--:|
     |Weibo (libWeiboSDK)| 3.1.4 | https://github.com/sinaweibosdk/weibo_ios_sdk|
@@ -11,6 +12,5 @@
 
 2. UnZip and put under folder **channels** like following shows:
 ![alt text](../DocImages/channelsFolder.png "channelsFolder.png")
-
 
 
