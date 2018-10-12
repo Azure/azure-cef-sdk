@@ -10,7 +10,7 @@ Azure用户连接服务(CEF)聚合多个社交平台和服务商，提供了统�
 
 Azure Customer Engagement Fabric (CEF) is an aggregation service for notifications, authentication & payments services around the various mobile / social platforms in China. It provides a single & consistent interface mapping to multiple providers for app developers to quickly integrate these functions. 
 
-Currently this SDK is mainly for Social Login and One-time-password (OTP) Login on mobile devices (IOS and Android).
+Currently this SDK is mainly for **Social Login** and **One-time-password (OTP)** on mobile devices (IOS and Android).
 
 [SDK Manual (Chinese)](http://azure.cn/)
 
