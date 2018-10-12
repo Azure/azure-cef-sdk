@@ -1,6 +1,18 @@
+# Azure用户连接服务(CEF) SDK
+
+Azure用户连接服务(CEF)聚合多个社交平台和服务商，提供了统一的API帮助客户快速的开发通知，登录验证和聚合支付功能。CEF打通平台数据，让客户可以统一管理和分析其终端用户在各个平台的信息和行为。
+
+目前此SDK支持手机端(iOS, Android)快速开发**第三方登录**和**验证码登录**。
+
+[SDK使用文档](http://azure.cn/)
+
 # Azure CEF SDK
 
-Azure Customer Engagement Fabric (CEF) provides unified API and SDK to enable companies to easily interact with their customers. This include notification (SMS, Email, App push), authentication (social login, OTP) and aggregated mobile payment. 
+Azure Customer Engagement Fabric (CEF) is an aggregation service for notifications, authentication & payments services around the various mobile / social platforms in China. It provides a single & consistent interface mapping to multiple providers for app developers to quickly integrate these functions. 
+
+Currently this SDK is mainly for Social Login and One-time-password (OTP) Login on mobile devices (IOS and Android).
+
+[SDK Manual (Chinese)](http://azure.cn/)
 
 # Contributing
 
