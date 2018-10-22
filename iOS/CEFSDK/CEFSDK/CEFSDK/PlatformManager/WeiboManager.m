@@ -53,18 +53,17 @@
         if(resp.statusCode == WeiboSDKResponseStatusCodeSuccess)
         {
             self.response.resultCode = CEFSocialLoginResultSuccess;
+            self.response.ID = resp.userID;
+            self.response.accessToken = resp.accessToken;
+            self.response.refreshToken = resp.refreshToken;
+            self.response.expirationDate = resp.expirationDate;
         }else if(resp.statusCode == WeiboSDKResponseStatusCodeUserCancel){
             self.response.resultCode = CEFSocialLoginResultUserCancel;
         }else{
             self.response.resultCode = CEFSocialLoginResultTokenFailure;
         }
         
-        self.response.ID = resp.userID;
-        self.response.accessToken=resp.accessToken;
-        self.response.refreshToken = resp.refreshToken;
-        self.response.expirationDate = resp.expirationDate;
         self.completion(self.response);
-        
 
     }else {
         self.response.resultCode = CEFSocialLoginResultUnknownError;

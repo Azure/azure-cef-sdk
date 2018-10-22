@@ -12,7 +12,7 @@
 
 
 //--------------CEFServiceManager-----------------------
-#define CEFService_DefaultEndpoint @"https://dev.cef.chinacloudapi.cn"
+#define CEFService_DefaultEndpoint @"https://cef.chinacloudapi.cn"
 #define CEFService_APIVersion @"api-version=2018-10-01"
 
 //--------------CEFServiceSocialLogin----------------
