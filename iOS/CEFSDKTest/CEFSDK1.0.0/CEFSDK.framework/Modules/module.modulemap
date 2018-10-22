@@ -1,0 +1,6 @@
+framework module CEFSDK {
+  umbrella header "CEFSDK.h"
+
+  export *
+  module * { export * }
+}
