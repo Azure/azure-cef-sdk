@@ -30,9 +30,8 @@
     [CEFSocialLoginManager loginWithChannel:CEFSocialLoginChannel_WeChat completion:^(CEFResponseSocialLogin *loginResult, CEFSocialLoginProfile *socialProfile) {
         
         dispatch_async(dispatch_get_main_queue(), ^{
-            self.logOutput.text = [self.logOutput.text stringByAppendingFormat:@"[WechatLogin] loginWithChannel loginResult:%@\n",loginResult];
-            self.logOutput.text = [self.logOutput.text stringByAppendingFormat:@"[WechatLogin] loginWithChannel socialProfile:%@\n",socialProfile];
-             [self scrollTextView];
+            self.logOutput.text = [[NSString stringWithFormat:@"[WechatLogin] loginWithChannel loginResult:%@\n",loginResult] stringByAppendingString:self.logOutput.text];
+            self.logOutput.text = [[NSString stringWithFormat:@"[WechatLogin] loginWithChannel socialProfile:%@\n",socialProfile] stringByAppendingString:self.logOutput.text];
         });
     }];
    
@@ -42,10 +41,8 @@
     [CEFSocialLoginManager loginWithChannel:CEFSocialLoginChannel_QQ completion:^(CEFResponseSocialLogin *loginResult, CEFSocialLoginProfile *socialProfile) {
         
         dispatch_async(dispatch_get_main_queue(), ^{
-            self.logOutput.text = [self.logOutput.text stringByAppendingFormat:@"[QQLogin] loginWithChannel loginResult:%@\n",loginResult];
-            self.logOutput.text = [self.logOutput.text stringByAppendingFormat:@"[QQLogin] loginWithChannel socialProfile:%@\n",socialProfile];
-             [self scrollTextView];
-
+            self.logOutput.text = [[NSString stringWithFormat:@"[QQLogin] loginWithChannel loginResult:%@\n",loginResult] stringByAppendingString:self.logOutput.text];
+            self.logOutput.text = [[NSString stringWithFormat:@"[QQLogin] loginWithChannel socialProfile:%@\n",socialProfile] stringByAppendingString:self.logOutput.text];
         });
     }];
 }
@@ -54,10 +51,8 @@
     [CEFSocialLoginManager loginWithChannel:CEFSocialLoginChannel_WeiBo completion:^(CEFResponseSocialLogin *loginResult, CEFSocialLoginProfile *socialProfile) {
         
         dispatch_async(dispatch_get_main_queue(), ^{
-            self.logOutput.text = [self.logOutput.text stringByAppendingFormat:@"[WeiboLogin] loginWithChannel loginResult:%@\n",loginResult];
-            self.logOutput.text = [self.logOutput.text stringByAppendingFormat:@"[WeiboLogin] loginWithChannel socialProfile:%@\n",socialProfile];
-             [self scrollTextView];
-
+            self.logOutput.text = [[NSString stringWithFormat:@"[WeiboLogin] loginWithChannel loginResult:%@\n",loginResult] stringByAppendingString:self.logOutput.text];
+            self.logOutput.text = [[NSString stringWithFormat:@"[WeiboLogin] loginWithChannel socialProfile:%@\n",socialProfile]stringByAppendingString:self.logOutput.text];
         });
     }];
 }
@@ -80,11 +75,10 @@
         [CEFOTPManager generateOTPCode:phone  templateName:OTPTemplateName expireTime:300 codeLength:6 channel:CEFOTPChannel_SMS completion:^(NSDictionary *result, NSError * _Nullable error) {
             dispatch_async(dispatch_get_main_queue(), ^{
                 if(error){
-                    self.logOutput.text = [self.logOutput.text stringByAppendingFormat:@"[generateOTPCode] generateOTPCode error:%@\n",error];
+                    self.logOutput.text = [[NSString stringWithFormat:@"[generateOTPCode] generateOTPCode error:%@\n",error] stringByAppendingString:self.logOutput.text];
                 }else{
-                    self.logOutput.text = [self.logOutput.text stringByAppendingFormat:@"[generateOTPCode] generateOTPCode result:%@\n",result];
+                    self.logOutput.text = [[NSString stringWithFormat:@"[generateOTPCode] generateOTPCode result:%@\n",result] stringByAppendingString:self.logOutput.text ];
                 }
-                 [self scrollTextView];
             });
         }];
     }
@@ -111,21 +105,14 @@
             
             dispatch_async(dispatch_get_main_queue(), ^{
                 if(error){
-                    self.logOutput.text = [self.logOutput.text stringByAppendingFormat:@"[verifyOTPCode] error:%@\n",error];
+                    self.logOutput.text = [[NSString stringWithFormat:@"[verifyOTPCode] error:%@\n",error] stringByAppendingString:self.logOutput.text];
                 }else{
-                    self.logOutput.text = [self.logOutput.text stringByAppendingFormat:@"[verifyOTPCode] result:%ld\n",(long)result];
+                    self.logOutput.text = [[NSString stringWithFormat:@"[verifyOTPCode] result:%ld\n",(long)result] stringByAppendingString:self.logOutput.text];
                 }
-                [self scrollTextView];
             });
         }];
     }
 
-}
-
-- (void) scrollTextView{
-    [self.logOutput becomeFirstResponder];
-    NSRange lastLine = NSMakeRange(self.logOutput.text.length - 1, 1);
-    [self.logOutput scrollRangeToVisible:lastLine];
 }
 
 // -- CEFSDK End --
