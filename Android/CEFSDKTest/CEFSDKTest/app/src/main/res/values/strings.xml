@@ -1,0 +1,15 @@
+<resources>
+    <string name="app_name">CEFSDKTest</string>
+    <string name="msg_code">短信验证码:</string>
+    <string name="msg_generateCode">生成验证码</string>
+    <string name="msg_getPhone">请输入手机号</string>
+    <string name="inputOTPCode">请输入验证码</string>
+    <string name="verifyOTPCodeLabel">验证验证码</string>
+    <string name="socialLogin">社交登录：</string>
+    <string name="socialLoginQQ">QQ登录</string>
+    <string name="socialLoginWeChat">微信登录</string>
+    <string name="socialLoginWeibo">微博登录</string>
+    <string name="log">输出日志</string>
+
+
+</resources>
