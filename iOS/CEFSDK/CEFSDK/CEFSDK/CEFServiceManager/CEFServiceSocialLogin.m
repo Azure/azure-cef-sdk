@@ -145,7 +145,7 @@ typedef void(^GetChannellLoginCompletion)(CEFResponseSocialLogin *result);
                 }
                 
                 if([NSNull null] == [dict objectForKey:@"description"]){
-                    return completion(result,nil)
+                    return completion(result,nil);
                 }
                 CEFSocialLoginProfile* profile = [[CEFSocialLoginProfile alloc] init];
                 NSString* channelName = [[dict objectForKey:@"description"] objectForKey:@"channelName"];
