@@ -32,4 +32,5 @@ dependencies {
     implementation files('libs/open_sdk_r5990_lite.jar')
     implementation files('libs/CEFSDK_Android.jar')
     implementation 'com.google.code.gson:gson:2.8.2'
+    implementation 'com.squareup.okhttp3:okhttp:3.3.0'
 }
