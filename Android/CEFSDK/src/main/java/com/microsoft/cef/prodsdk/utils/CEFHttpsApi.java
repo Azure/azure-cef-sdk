@@ -23,6 +23,7 @@ import okhttp3.Request;
 import okhttp3.RequestBody;
 import okhttp3.Response;
 
+
 public class CEFHttpsApi {
     private static volatile CEFHttpsApi instance;
     private static OkHttpClient okHttpClient = null;
@@ -86,7 +87,7 @@ public class CEFHttpsApi {
             @Override
             public void onFailure(Call call, IOException e) {
                 String errorMsg = "{" +
-                        "errorMessage:'" + e.toString() + '\'' +
+                        "error:'" + e.toString() + '\'' +
                         '}';
                 mCEFCallback.onFail(errorMsg);
             }
@@ -97,7 +98,11 @@ public class CEFHttpsApi {
                 if (response.isSuccessful()) {
                     mCEFCallback.onSuccess(responseLabel);
                 } else {
-                    mCEFCallback.onFail(responseLabel);
+                    String msg = "{" +
+                            "Code:'" + response.code() + '\'' +
+                            ", errorMessage:'" + responseLabel + '\'' +
+                            '}';
+                    mCEFCallback.onFail(msg);
                 }
             }
         });
@@ -124,7 +129,7 @@ public class CEFHttpsApi {
             @Override
             public void onFailure(Call call, IOException e) {
                 String errorMsg = "{" +
-                        "errorMessage:'" + e.toString() + '\'' +
+                        "error:'" + e.toString() + '\'' +
                         '}';
                 mCEFCallback.onFail(errorMsg);
             }
@@ -135,7 +140,11 @@ public class CEFHttpsApi {
                 if (response.isSuccessful()) {
                     mCEFCallback.onSuccess(responseLabel);
                 } else {
-                    mCEFCallback.onFail(responseLabel);
+                    String msg = "{" +
+                            "Code:'" + response.code() + '\'' +
+                            ", errorMessage:'" + responseLabel + '\'' +
+                            '}';
+                    mCEFCallback.onFail(msg);
                 }
             }
         });
@@ -146,7 +155,6 @@ public class CEFHttpsApi {
         NetworkInfo networkInfo = connMgr.getActiveNetworkInfo();
         return (networkInfo != null && networkInfo.isConnected());
     }
-
 
     public enum Type {
         POST, GET
