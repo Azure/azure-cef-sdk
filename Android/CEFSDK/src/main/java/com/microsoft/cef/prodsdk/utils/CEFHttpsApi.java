@@ -23,6 +23,9 @@ import okhttp3.Request;
 import okhttp3.RequestBody;
 import okhttp3.Response;
 
+import static com.microsoft.cef.prodsdk.utils.CEFUtils.CEF_LOG;
+import static com.microsoft.cef.prodsdk.utils.CEFUtils.prepareSharedAccessToken;
+
 public class CEFHttpsApi {
     private static volatile CEFHttpsApi instance;
     private static OkHttpClient okHttpClient = null;
@@ -78,7 +81,7 @@ public class CEFHttpsApi {
         Request request = new Request.Builder()
                 .url(url)
                 .addHeader("Account", CEFUtils.getLocalAccount(context))
-                .addHeader("Authorization", CEFUtils.prepareSharedAccessToken(context))
+                .addHeader("Authorization", prepareSharedAccessToken(context))
                 .post(requestBody)
                 .build();
         Call call = okHttpClient.newCall(request);
@@ -86,7 +89,7 @@ public class CEFHttpsApi {
             @Override
             public void onFailure(Call call, IOException e) {
                 String errorMsg = "{" +
-                        "errorMessage:'" + e.toString() + '\'' +
+                        "error:'" + e.toString() + '\'' +
                         '}';
                 mCEFCallback.onFail(errorMsg);
             }
@@ -97,7 +100,11 @@ public class CEFHttpsApi {
                 if (response.isSuccessful()) {
                     mCEFCallback.onSuccess(responseLabel);
                 } else {
-                    mCEFCallback.onFail(responseLabel);
+                    String msg = "{" +
+                            "Code:'" + response.code() + '\'' +
+                            ", errorMessage:'" + responseLabel + '\'' +
+                            '}';
+                    mCEFCallback.onFail(msg);
                 }
             }
         });
@@ -117,14 +124,14 @@ public class CEFHttpsApi {
         Request request = new Request.Builder()
                 .get()
                 .addHeader("Account", CEFUtils.getAccountName())
-                .addHeader("Authorization", CEFUtils.prepareSharedAccessToken(context))
+                .addHeader("Authorization", prepareSharedAccessToken(context))
                 .url(url)
                 .build();
         okHttpClient.newCall(request).enqueue(new Callback() {
             @Override
             public void onFailure(Call call, IOException e) {
                 String errorMsg = "{" +
-                        "errorMessage:'" + e.toString() + '\'' +
+                        "error:'" + e.toString() + '\'' +
                         '}';
                 mCEFCallback.onFail(errorMsg);
             }
@@ -135,7 +142,11 @@ public class CEFHttpsApi {
                 if (response.isSuccessful()) {
                     mCEFCallback.onSuccess(responseLabel);
                 } else {
-                    mCEFCallback.onFail(responseLabel);
+                    String msg = "{" +
+                            "Code:'" + response.code() + '\'' +
+                            ", errorMessage:'" + responseLabel + '\'' +
+                            '}';
+                    mCEFCallback.onFail(msg);
                 }
             }
         });
@@ -146,7 +157,6 @@ public class CEFHttpsApi {
         NetworkInfo networkInfo = connMgr.getActiveNetworkInfo();
         return (networkInfo != null && networkInfo.isConnected());
     }
-
 
     public enum Type {
         POST, GET
