@@ -40,7 +40,7 @@ typedef void(^LoginWithChannelCompletion)(CEFResponseSocialLogin *loginResult,CE
 - (BOOL) handleOpenURL:(NSURL *)url;
 
 /**
- Setup payment channels by CEFCredential.
+ Setup channels by CEFCredential.
  
  @param credential A CEFCredetial instance contains AppKey,AppScerect for different channels. Will only setup channels has valid keys in credential.
  */
