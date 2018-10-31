@@ -25,17 +25,14 @@ import com.microsoft.cef.prodsdk.utils.CEFConstants;
 import com.microsoft.cef.prodsdk.utils.CEFHttpsApi;
 import com.microsoft.cef.prodsdk.utils.CEFErrorMessages;
 import com.microsoft.cef.prodsdk.utils.CEFUtils;
+import  com.microsoft.cef.prodsdk.bean.CEFSocialLoginResultCode;
 import com.tencent.connect.common.Constants;
 import com.tencent.mm.opensdk.modelbase.BaseResp;
 import com.tencent.mm.opensdk.openapi.IWXAPIEventHandler;
-import  com.microsoft.cef.prodsdk.bean.CEFSocialLoginResultCode;
 import org.json.JSONObject;
-
 
 import java.util.HashMap;
 import java.util.Map;
-
-
 
 public class CEFServiceSocialLogin {
     @SuppressLint("StaticFieldLeak")
