@@ -4,7 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 
-import com.microsoft.cef.prodlibrary.cefservicemanager.CEFServiceSocialLogin;
+import com.microsoft.cef.prodsdk.cefservicemanager.CEFServiceSocialLogin;
 import com.tencent.mm.opensdk.modelbase.BaseReq;
 import com.tencent.mm.opensdk.modelbase.BaseResp;
 import com.tencent.mm.opensdk.openapi.IWXAPIEventHandler;
