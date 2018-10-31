@@ -24,10 +24,10 @@ public class CEFUtils {
     private final static String SIGN_KEY = "sig";
     private final static String KEY_NAME_KEY = "skn";
     private final static String EXPIRY_KEY = "se";
-    private static String accountName;
-    private static String sasKey;
-    private static String sasKeyName;
-    private static String serverEndpoint;
+    private static String accountName = "";
+    private static String sasKey = "";
+    private static String sasKeyName="";
+    private static String serverEndpoint="";
 
     public static void setServerEndpoint(String serverEndpoint) {
         CEFUtils.serverEndpoint = serverEndpoint;

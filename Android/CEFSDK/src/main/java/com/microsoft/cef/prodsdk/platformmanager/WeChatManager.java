@@ -123,11 +123,17 @@ public class WeChatManager {
     }
 
     public boolean isWeChatInstall() {
-        return msgApi.isWXAppInstalled();
+        if (null != msgApi){
+            return msgApi.isWXAppInstalled();
+        }
+        return false;
     }
 
     public boolean isWeChatSupportAPI() {
-        return msgApi.isWXAppSupportAPI();
+        if (null != msgApi){
+            return msgApi.isWXAppSupportAPI();
+        }
+        return false;
     }
 
 
