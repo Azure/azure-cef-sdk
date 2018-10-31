@@ -25,22 +25,23 @@ import com.microsoft.cef.prodsdk.utils.CEFConstants;
 import com.microsoft.cef.prodsdk.utils.CEFHttpsApi;
 import com.microsoft.cef.prodsdk.utils.CEFErrorMessages;
 import com.microsoft.cef.prodsdk.utils.CEFUtils;
-import com.microsoft.cef.prodsdk.bean.CEFSocialLoginResultCode;
 import com.tencent.connect.common.Constants;
 import com.tencent.mm.opensdk.modelbase.BaseResp;
 import com.tencent.mm.opensdk.openapi.IWXAPIEventHandler;
-
+import  com.microsoft.cef.prodsdk.bean.CEFSocialLoginResultCode;
 import org.json.JSONObject;
 
 
 import java.util.HashMap;
 import java.util.Map;
 
+
+
 public class CEFServiceSocialLogin {
     @SuppressLint("StaticFieldLeak")
     private static volatile CEFServiceSocialLogin instance;
     private CEFResponseSocialLoginListener responseSocialLoginListener;
-    private CEFCredential credential;
+    private CEFCredential mCredential;
     private static Activity mActivity;
     private CEFSocialLoginListener localLoginListener;
 
@@ -58,7 +59,7 @@ public class CEFServiceSocialLogin {
     }
 
     public static CEFServiceSocialLogin getInstance(Activity activity) {
-        CEFServiceSocialLogin.mActivity = activity;
+        mActivity = activity;
         if (null == instance) {
             synchronized (CEFServiceSocialLogin.class) {
                 if (null == instance) {
@@ -70,32 +71,32 @@ public class CEFServiceSocialLogin {
     }
 
     /**
-     * Setup payment channels by CEFCredential.
+     * Setup channels by CEFCredential.
      *
      * @param credential A CEFCredential instance contains AppKey,AppScerect for different channels.
      *                   Will only setup channels has valid keys in credential.
      */
     public void setupChannel(CEFCredential credential) {
-        this.credential = credential;
-        if (TextUtils.isEmpty(credential.getWeChatAppId()) ||
-                TextUtils.isEmpty(credential.getWeChatAppSecret())) {
+        mCredential = credential;
+        if (TextUtils.isEmpty(mCredential.getWeChatAppId()) ||
+                TextUtils.isEmpty(mCredential.getWeChatAppSecret())) {
             Log.e(CEFUtils.CEF_LOG, CEFErrorMessages.CEFEM_WECHAT_NOTCONFIG);
         } else {
-            WeChatManager.getInstance().initWeChat(CEFServiceSocialLogin.mActivity, credential);
+            WeChatManager.getInstance().initWeChat(mActivity, mCredential);
         }
 
-        if (TextUtils.isEmpty(credential.getWeiboAppkey()) ||
-                TextUtils.isEmpty(credential.getWeiboSecret()) ||
-                TextUtils.isEmpty(credential.getWeiboRedirectURL())) {
+        if (TextUtils.isEmpty(mCredential.getWeiboAppkey()) ||
+                TextUtils.isEmpty(mCredential.getWeiboSecret()) ||
+                TextUtils.isEmpty(mCredential.getWeiboRedirectURL())) {
             Log.e(CEFUtils.CEF_LOG, CEFErrorMessages.CEFEM_CEFSOCIALLOGIN_WEIBONOTCONFIG);
         } else {
-            WeiboManager.getInstance().initWeibo(CEFServiceSocialLogin.mActivity, credential);
+            WeiboManager.getInstance().initWeibo(mActivity, mCredential);
         }
 
-        if (TextUtils.isEmpty(credential.getQQAppId())) {
+        if (TextUtils.isEmpty(mCredential.getQQAppId())) {
             Log.e(CEFUtils.CEF_LOG, CEFErrorMessages.CEFEM_CEFSOCIALLOGIN_QQNOTCONFIG);
         } else {
-            QQManager.getInstance().initQQ(CEFServiceSocialLogin.mActivity, credential.getQQAppId());
+            QQManager.getInstance().initQQ(mActivity, mCredential.getQQAppId());
         }
     }
 
@@ -110,7 +111,7 @@ public class CEFServiceSocialLogin {
         responseSocialLoginListener = socialLoginListener;
         if (null == mCredential){
             CEFResponseSocialLogin auth = new CEFResponseSocialLogin();
-            auth.setResultCode(CEFSocialLoginResultTokenFailure);
+            auth.setResultCode(CEFSocialLoginResultCode.CEFSocialLoginResultTokenFailure);
             auth.setResultDescription("CEFCredential is null,please init it.");
             auth.setChannel(channel);
             responseSocialLoginListener.onComplete(auth, null);
@@ -134,8 +135,8 @@ public class CEFServiceSocialLogin {
                     responseSocialLoginListener.onComplete(auth, null);
                     return;
                 }
-                if (TextUtils.isEmpty(credential.getWeChatAppId()) ||
-                        TextUtils.isEmpty(credential.getWeChatAppSecret())) {
+                if (TextUtils.isEmpty(mCredential.getWeChatAppId()) ||
+                        TextUtils.isEmpty(mCredential.getWeChatAppSecret())) {
                     CEFResponseSocialLogin auth = new CEFResponseSocialLogin();
                     auth.setResultCode(CEFSocialLoginResultCode.CEFSocialLoginResultTokenFailure);
                     auth.setResultDescription(CEFErrorMessages.CEFEM_WECHAT_NOTCONFIG);
@@ -146,9 +147,9 @@ public class CEFServiceSocialLogin {
                 WeChatManager.getInstance().evokeWeChat(localLoginListener);
                 break;
             case CEFSocialLoginChannel_Weibo:
-                if (TextUtils.isEmpty(credential.getWeiboAppkey()) ||
-                        TextUtils.isEmpty(credential.getWeiboSecret()) ||
-                        TextUtils.isEmpty(credential.getWeiboRedirectURL())) {
+                if (TextUtils.isEmpty(mCredential.getWeiboAppkey()) ||
+                        TextUtils.isEmpty(mCredential.getWeiboSecret()) ||
+                        TextUtils.isEmpty(mCredential.getWeiboRedirectURL())) {
                     CEFResponseSocialLogin auth = new CEFResponseSocialLogin();
                     auth.setResultCode(CEFSocialLoginResultCode.CEFSocialLoginResultTokenFailure);
                     auth.setResultDescription(CEFErrorMessages.CEFEM_CEFSOCIALLOGIN_WEIBONOTCONFIG);
@@ -159,7 +160,7 @@ public class CEFServiceSocialLogin {
                 WeiboManager.getInstance().evokeWeibo(localLoginListener);
                 break;
             case CEFSocialLoginChannel_QQ:
-                if (TextUtils.isEmpty(credential.getQQAppId())) {
+                if (TextUtils.isEmpty(mCredential.getQQAppId())) {
                     CEFResponseSocialLogin auth = new CEFResponseSocialLogin();
                     auth.setResultCode(CEFSocialLoginResultCode.CEFSocialLoginResultTokenFailure);
                     auth.setResultDescription(CEFErrorMessages.CEFEM_CEFSOCIALLOGIN_QQNOTCONFIG);
@@ -184,7 +185,7 @@ public class CEFServiceSocialLogin {
      * @param mIWXAPIEventHandler WX interface IWXAPIEventHandler
      */
     public void onCreate(IWXAPIEventHandler mIWXAPIEventHandler) {
-        WeChatManager.getInstance().onCreate(CEFServiceSocialLogin.mActivity, mIWXAPIEventHandler);
+        WeChatManager.getInstance().onCreate(mActivity, mIWXAPIEventHandler);
     }
 
     /**
@@ -271,7 +272,7 @@ public class CEFServiceSocialLogin {
                     responseSocialLoginListener.onComplete(auth, cefUserAuthProfile);
                 } catch (Exception e) {
                     Log.e(CEFUtils.CEF_LOG, e.toString());
-                    auth.setResultCode(CEFSocialLoginResultCode.CEFSocialLoginResultUnknown);
+                    auth.setResultCode(CEFSocialLoginResultCode.CEFSocialLoginResultHttpError);
                     auth.setChannel(auth.getChannel());
                     responseSocialLoginListener.onComplete(auth, null);
                 }
@@ -279,7 +280,7 @@ public class CEFServiceSocialLogin {
 
             @Override
             public void onFail(String fail) {
-                auth.setResultCode(CEFSocialLoginResultCode.CEFSocialLoginResultTokenFailure);
+                auth.setResultCode(CEFSocialLoginResultCode.CEFSocialLoginResultHttpError);
                 auth.setResultDescription(fail);
                 auth.setChannel(auth.getChannel());
                 responseSocialLoginListener.onComplete(auth, null);

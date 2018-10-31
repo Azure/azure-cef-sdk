@@ -10,24 +10,26 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.microsoft.cef.prodlibrary.bean.CEFCredential;
-import com.microsoft.cef.prodlibrary.bean.CEFOTPResultCode;
-import com.microsoft.cef.prodlibrary.bean.CEFResponseSocialLogin;
-import com.microsoft.cef.prodlibrary.bean.CEFSocialLoginProfile;
-import com.microsoft.cef.prodlibrary.cefservicemanager.CEFServiceConfig;
-import com.microsoft.cef.prodlibrary.cefservicemanager.CEFServiceOTP;
-import com.microsoft.cef.prodlibrary.cefservicemanager.CEFServiceSocialLogin;
-import com.microsoft.cef.prodlibrary.listener.CEFGenerateOTPCodeListener;
-import com.microsoft.cef.prodlibrary.listener.CEFResponseSocialLoginListener;
-import com.microsoft.cef.prodlibrary.listener.CEFVerifyOTPCodeListener;
 
+import com.microsoft.cef.prodsdk.bean.CEFCredential;
+import com.microsoft.cef.prodsdk.bean.CEFOTPChannel;
+import com.microsoft.cef.prodsdk.bean.CEFOTPResultCode;
+import com.microsoft.cef.prodsdk.bean.CEFResponseSocialLogin;
+import com.microsoft.cef.prodsdk.bean.CEFSocialLoginProfile;
+import com.microsoft.cef.prodsdk.cefservicemanager.CEFServiceConfig;
+import com.microsoft.cef.prodsdk.cefservicemanager.CEFServiceOTP;
+import com.microsoft.cef.prodsdk.cefservicemanager.CEFServiceSocialLogin;
+import com.microsoft.cef.prodsdk.listener.CEFGenerateOTPCodeListener;
+import com.microsoft.cef.prodsdk.listener.CEFResponseSocialLoginListener;
+import com.microsoft.cef.prodsdk.listener.CEFVerifyOTPCodeListener;
 
 import java.util.Map;
 
-import static com.microsoft.cef.prodlibrary.bean.CEFOTPChannel.CEFOTPChannel_SMS;
-import static com.microsoft.cef.prodlibrary.bean.CEFSocialLoginChannel.CEFSocialLoginChannel_QQ;
-import static com.microsoft.cef.prodlibrary.bean.CEFSocialLoginChannel.CEFSocialLoginChannel_WeChat;
-import static com.microsoft.cef.prodlibrary.bean.CEFSocialLoginChannel.CEFSocialLoginChannel_Weibo;
+import static com.microsoft.cef.prodsdk.bean.CEFOTPChannel.CEFOTPChannel_SMS;
+import static com.microsoft.cef.prodsdk.bean.CEFSocialLoginChannel.CEFSocialLoginChannel_QQ;
+import static com.microsoft.cef.prodsdk.bean.CEFSocialLoginChannel.CEFSocialLoginChannel_WeChat;
+import static com.microsoft.cef.prodsdk.bean.CEFSocialLoginChannel.CEFSocialLoginChannel_Weibo;
+
 
 public class MainActivity extends AppCompatActivity {
     private String logLabel = "";
@@ -136,7 +138,7 @@ public class MainActivity extends AppCompatActivity {
             Toast.makeText(this, "请输入正确的验证码", Toast.LENGTH_SHORT).show();
             return;
         }
-        serviceOTP.verifyOTPCode(phoneLabel, codeLabel, CEFOTPChannel_SMS, new CEFVerifyOTPCodeListener() {
+        serviceOTP.verifyOTPCode(phoneLabel, codeLabel, CEFOTPChannel.CEFOTPChannel_SMS, new CEFVerifyOTPCodeListener() {
             @Override
             public void onComplete(CEFOTPResultCode code, String msg) {
                 setLabel("[verifyOTPCode] code:" + code.ordinal() + "  ;msg:" + msg);
