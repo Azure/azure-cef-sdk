@@ -45,6 +45,6 @@ Gradle版本位置：
 ![alt text](../DocImages/gradleVersion.png "gradleVersion.png")
 
 
-# 插件版本和Gradle版本对照关系：
+# 插件版本和Gradle版本对照关系
 https://developer.android.google.cn/studio/releases/gradle-plugin#updating-plugin
 
