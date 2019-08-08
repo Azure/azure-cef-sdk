@@ -11,7 +11,6 @@ android {
         targetSdkVersion 27
         versionCode 1
         versionName "1.0"
-
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
 
     }
@@ -35,5 +34,29 @@ dependencies {
     compileOnly 'com.google.code.gson:gson:2.8.2'
     compileOnly 'com.sina.weibo.sdk:core:4.1.0:openDefaultRelease@aar'
     compileOnly 'com.tencent.mm.opensdk:wechat-sdk-android-with-mta:1.1.6'
-    compileOnly files('libs/open_sdk_r5990_lite.jar')
+    compileOnly files('libs/open_sdk_r6137_lite.jar')
 }
+
+buildscript {
+    repositories {
+        google()//in newer versions of Android Studio
+        jcenter()
+        mavenCentral()
+        maven { url "https://dl.bintray.com/thelasterstar/maven/" }
+
+    }
+    dependencies {
+        classpath 'com.android.tools.build:gradle:3.1.0'
+    }
+}
+
+allprojects {
+    repositories {
+        google() // and here
+        jcenter()
+        mavenCentral()
+        maven { url "https://dl.bintray.com/thelasterstar/maven/" }
+
+    }
+}
+

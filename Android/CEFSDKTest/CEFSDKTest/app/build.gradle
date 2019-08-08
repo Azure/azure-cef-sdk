@@ -29,8 +29,8 @@ dependencies {
     implementation 'com.android.support.constraint:constraint-layout:1.0.2'
     implementation 'com.tencent.mm.opensdk:wechat-sdk-android-with-mta:1.1.6'
     implementation 'com.sina.weibo.sdk:core:4.1.0:openDefaultRelease@aar'
-    implementation files('libs/open_sdk_r5990_lite.jar')
-    implementation files('libs/CEFSDK_Android.jar')
+    implementation files('libs/open_sdk_r6137_lite.jar')
+    implementation files('libs/classes_bc_debug.jar')
     implementation 'com.google.code.gson:gson:2.8.2'
     implementation 'com.squareup.okhttp3:okhttp:3.3.0'
 }
