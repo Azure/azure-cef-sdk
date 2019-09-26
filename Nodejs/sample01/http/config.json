@@ -1,0 +1,8 @@
+{
+    "ccs" : {
+        "account": "",
+        "key": "",
+        "role": "full",
+        "endpoint": "https://bluecloudccs.21vbluecloud.com"
+    }
+  }
