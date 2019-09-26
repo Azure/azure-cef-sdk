@@ -10,16 +10,11 @@ yargs.command('send', 'make a get HTTPs request', function (_yargs) {
 }, function (argv) {
 
     const {
-        account: acctountName,
         body: content
     } = argv;
 
     console.log(argv);
 
-    if (!acctountName) {
-        console.log('No acctountName is passed!');
-        process.exit();
-    }
 
     /*
       {
@@ -53,16 +48,16 @@ yargs.command('send', 'make a get HTTPs request', function (_yargs) {
 
     const { templateName, templateParam} = messageBody;
 
-    if (!templateName
-        || !templateParam
-    ) {
-        console.log('The input messageBody is not right!');
-        process.exit();
-    }
+    // if (!templateName
+    //     || !templateParam
+    // ) {
+    //     console.log('The input messageBody is not right!');
+    //     process.exit();
+    // }
 
 
     // console.log(argv.url);
-    return sendMessage(acctountName, content).then(res =>{
+    return sendMessage(content).then(res =>{
         /*
         msgtype=2&phone=13400000000 &reqid=16011514475100000001&extend=&receivetime=20160101081 220&sendtime=20160101081218&state=0
         yyyyMMddHHmmss

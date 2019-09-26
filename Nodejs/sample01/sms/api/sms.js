@@ -1,7 +1,7 @@
 const { httpClientSAS, } = require('./../../http/client');
 
 
-function sendMessage(accountName, message) {
+function sendMessage(message) {
     
     
     const url = `services/sms/messages`;
@@ -24,3 +24,8 @@ function sendMessage(accountName, message) {
     });
     
 }
+
+
+module.exports = {
+    sendMessage
+};
