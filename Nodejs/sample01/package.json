@@ -1,0 +1,28 @@
+{
+  "name": "ccs-sample",
+  "version": "1.0.0",
+  "description": "",
+  "main": "plunder.js",
+  "scripts": {
+    "sms": "node ./sms/sms.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JHinW/cef-node.git"
+  },
+  "keywords": [
+    "cef"
+  ],
+  "author": "jin",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/JHinW/cef-node/issues"
+  },
+  "homepage": "https://github.com/JHinW/cef-node#readme",
+  "dependencies": {
+    "adal-node": "^0.1.28",
+    "axios": "^0.19.0",
+    "path-to-regexp": "^3.0.0",
+    "yargs": "^13.2.4"
+  }
+}

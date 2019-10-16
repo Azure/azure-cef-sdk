@@ -1,0 +1,10 @@
+mvnDebug exec:java -Dexec.mainClass="com.bluecloud.ccs"
+
+
+mvn exec:java -Dexec.mainClass="com.bluecloud.ccs.App"
+
+
+mvn exec:java -Dexec.mainClass="com.bluecloud.ccs.App"
+
+
+mvn compile && mvn exec:java -D"exec.mainClass"="com.bluecloud.ccs.App"

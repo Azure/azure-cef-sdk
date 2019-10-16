@@ -2,7 +2,6 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/CEFSDK/CEFSDK.iml" filepath="$PROJECT_DIR$/CEFSDK/CEFSDK.iml" />
       <module fileurl="file://$PROJECT_DIR$/CEFSDKTest.iml" filepath="$PROJECT_DIR$/CEFSDKTest.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
     </modules>
