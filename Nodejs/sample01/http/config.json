@@ -1,8 +1,8 @@
 {
     "ccs" : {
-        "account": "",
-        "key": "",
+        "account": "testccs1",
+        "key": "3qDpJPoDMszh8xMBTX+NlYxmgsoS6b+33DNU8TT3NKo=",
         "role": "full",
-        "endpoint": "https://bluecloudccs.21vbluecloud.com"
+        "endpoint": "http://cefdevcluster.chinaeast2.cloudapp.chinacloudapi.cn"
     }
   }
